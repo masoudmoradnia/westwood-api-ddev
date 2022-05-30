@@ -37,7 +37,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::get('/menu', [MenuController::class, 'index']);
+Route::get('/menu', [MenuController::class, 'd__index']); //deprecated should be deleted 
+Route::get('/wwmenu', [MenuController::class, 'index']); 
+
 Route::get('/downloads', [DownloadController::class, 'index']);
 Route::get('/downloads/bulk', [DownloadController::class, 'bulk']);
 Route::get('/filterdDownloads', [DownloadController::class, 'filter']); // toDo : merge with /downloads
