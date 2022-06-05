@@ -16,6 +16,15 @@ class System extends Model
     {
         return $this->belongsToMany(Download::class);
     }
+
+    /**
+     * The Applications that belong to the system.
+     */
+    public function Applications()
+    {
+        return $this->belongsToMany(Application::class);
+    }
+
     /**
      * The refernces that belong to the system.
      */
@@ -23,10 +32,10 @@ class System extends Model
     {
         return $this->belongsToMany(Reference::class);
     }
-    
+
     /**
-    * The Products that belong to the system.
-    */
+     * The Products that belong to the system.
+     */
     public function products()
     {
         return $this->belongsToMany(Product::class);

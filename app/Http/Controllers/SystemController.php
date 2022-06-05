@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Systemgroup; deprecated : to delete
-use App\Models\Systemgroup;
-use App\System;
-use App\Product;
+use App\Models\System;
 
-class SystemgroupController extends Controller
+class SystemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,20 +15,20 @@ class SystemgroupController extends Controller
     public function index(Request $request)
     {
         
-        return Systemgroup::all();
+        return System::all();
     }
     
    /**
      * Display the specified resource.
      *
-     * @param  App\Models\Systemgroup  $systemgroup
+     * @param  App\Models\System  $system
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Systemgroup $systemgroup)
+    public function show(Request $request, System $system)
     {
        if($request->has('load')){
-           $systemgroup->load($request->load);
+           $system->load($request->load);
        }
-        return($systemgroup);
+        return($system);
     }
 }
