@@ -57,6 +57,8 @@ Route::get('/systemgroups/{systemgroup}', [SystemgroupController::class, 'show']
 Route::get('/systems/{system}', [SystemController::class, 'show']);
 
 Route::get('/productlevels', [ProductlevelController::class, 'index']);
+Route::get('/productlevels/{productlevel}', [ProductlevelController::class, 'show']);
+
 Route::get('/search', [SearchController::class, 'index']);
 Route::get('/img/{path}', [ImageController::class, 'show']);
 
