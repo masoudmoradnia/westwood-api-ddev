@@ -48,6 +48,8 @@ Route::get('/solution/application/{application}', [SolutionController::class, 'i
 Route::get('/solution/{solution}', [SolutionController::class, 'show']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/applications', [ApplicationController::class, 'index']);
+Route::get('/applications/{application}', [ApplicationController::class, 'show']);
+
 Route::get('/systemgroups', [SystemgroupController::class, 'index']);
 Route::get('/productlevels', [ProductlevelController::class, 'index']);
 Route::get('/search', [SearchController::class, 'index']);

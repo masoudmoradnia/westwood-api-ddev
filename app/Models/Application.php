@@ -9,23 +9,23 @@ use Laravel\Scout\Searchable;
 class Application extends Model
 {
     use HasFactory;
-    use Searchable;
+    // use Searchable;
 
 
     // search
-    public function toSearchableArray()
-    {
-        $array = $this->toArray();
+    // public function toSearchableArray()
+    // {
+    //     $array = $this->toArray();
 
-        return [
-             'id' => $this->id,
-             'title' => $this->title,
-             'description' => $this->description,
-             'highligts' => $this->highligts,
-             'highlights_title' => $this->highlights_title,
+    //     return [
+    //          'id' => $this->id,
+    //          'title' => $this->title,
+    //          'description' => $this->description,
+    //          'highligts' => $this->highligts,
+    //          'highlights_title' => $this->highlights_title,
              
-        ];
-    }
+    //     ];
+    // }
     // protected $with = ['referencesmm', 'systems', 'downloads','products'];
 
     /**

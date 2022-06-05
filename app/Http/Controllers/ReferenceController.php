@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Reference;
+use App\Models\Reference;
+use App\Reference as DReference; //deprecated : to delete (maybe!)
 use App\Applicationstandalone;
 use App\Http\Filters\ReferenceFilter;
 use App\System;
@@ -16,24 +17,19 @@ class ReferenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ReferenceFilter $filter)
+    public function index(Request $request , ReferenceFilter $filter)
     {
-        $references_ids =  Reference::filter($filter)->get()->pluck('id');
+        if ($request->has('filter')) {
+            $references_ids =  DReference::filter($filter)->get()->pluck('id');
+            $referencesGroupedByApplication = Applicationstandalone::with(['referencesmm' => function ($q) use ($references_ids) {
+                $q->orderBy('prio', 'desc')->whereIn('id', $references_ids);
+            }])->get();
+            return $referencesGroupedByApplication;
+        }
+        return Reference::orderBy('prio', 'desc')->take(20)->get();
 
-         $referencesGroupedByApplication = Applicationstandalone::with(['referencesmm'=> function ($q) use ($references_ids) {
-            $q->orderBy('prio', 'desc')->whereIn('id', $references_ids);
-        }]) -> get();
-       
-        // foreach($referencesGroupedByApplication as $key=>$application) {
-        //     if(!sizeof($application['referencesmm'])) {
-        //         unset($referencesGroupedByApplication[$key]);
-        //     }
-        // }
 
-        return $referencesGroupedByApplication;
-        
-       
+
+
     }
-
-    
 }
