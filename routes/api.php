@@ -11,6 +11,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\SystemgroupController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\ProductlevelController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ImageController;
 
@@ -58,6 +59,11 @@ Route::get('/systems/{system}', [SystemController::class, 'show']);
 
 Route::get('/productlevels', [ProductlevelController::class, 'index']);
 Route::get('/productlevels/{productlevel}', [ProductlevelController::class, 'show']);
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{product}', [ProductController::class, 'show']);
+
+
 
 Route::get('/search', [SearchController::class, 'index']);
 Route::get('/img/{path}', [ImageController::class, 'show']);
