@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class System extends Model
 {
 
-
+    protected $appends = ['systemgroups'];
 
     /**
      * The downloads that belong to the system.
@@ -48,4 +48,8 @@ class System extends Model
     {
         return $this->belongsToMany(Systemgroup::class);
     }
+    public function getSystemgroupsAttribute(){
+        // return 'test';
+        return $this->systemgroups()->pluck('id');
+      }
 }
