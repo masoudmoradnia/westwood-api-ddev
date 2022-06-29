@@ -28,8 +28,5 @@ class ReferenceController extends Controller
         }
         return Reference::orderBy('prio', 'desc')->take(20)->get();
 
-
-
-
     }
 }
