@@ -6,6 +6,7 @@ use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use APP\Models\Application;
 
 class Reference extends Model
 {
@@ -13,7 +14,7 @@ class Reference extends Model
     use Searchable;
     use Filterable;
 
-
+    protected $appends = ['applicationids'];
     // search
     public function toSearchableArray()
     {
@@ -60,6 +61,10 @@ class Reference extends Model
      */
     public function applications()
     {
-        return $this->belongsToMany(Applicationstandalone::class, 'application_reference', 'reference_id', 'application_id');
+        return $this->belongsToMany(Application::class, 'application_reference', 'reference_id', 'application_id');
     }
+    public function getApplicationidsAttribute(){
+        // return 'test';
+        return $this->applications()->pluck('id');
+      }
 }
